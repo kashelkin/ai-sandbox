@@ -24,6 +24,7 @@ services:
       - ~/.claude/settings.json:/home/${CONTAINER_USER}/.claude/settings.json
       - ~/.claude/CLAUDE.md:/home/${CONTAINER_USER}/.claude/CLAUDE.md
       - ~/.claude/commands:/home/${CONTAINER_USER}/.claude/commands
+      - ~/.claude/agents:/home/${CONTAINER_USER}/.claude/agents
 
       # Claude Code - isolated history per project (named volume)
       - claude-history:/home/${CONTAINER_USER}/.claude/projects

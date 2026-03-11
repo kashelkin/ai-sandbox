@@ -3,7 +3,8 @@ $claudeDir = "$env:USERPROFILE\.claude"
 # Create directories if missing
 $dirs = @(
     $claudeDir,
-    "$claudeDir\commands"
+    "$claudeDir\commands",
+    "$claudeDir\agents"
 )
 foreach ($dir in $dirs) {
     if (!(Test-Path $dir)) {
