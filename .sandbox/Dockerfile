@@ -18,10 +18,6 @@ RUN mkdir -p /home/${CONTAINER_USER}/.dotnet \
   /home/${CONTAINER_USER}/.claude/projects \
   /home/${CONTAINER_USER}/.claude/commands \
   /home/${CONTAINER_USER}/.claude/agents && \
-  touch /home/${CONTAINER_USER}/.claude.json \
-  /home/${CONTAINER_USER}/.claude/.credentials.json \
-  /home/${CONTAINER_USER}/.claude/settings.json \
-  /home/${CONTAINER_USER}/.claude/CLAUDE.md && \
   chown -R ${CONTAINER_USER} /home/${CONTAINER_USER}
 
 USER ${CONTAINER_USER}
