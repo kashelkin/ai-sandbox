@@ -1,0 +1,52 @@
+services:
+  devcontainer:
+    build: .
+    network_mode: "service:firewall"
+    stdin_open: true
+    tty: true
+    depends_on:
+      firewall:
+        condition: service_healthy
+    cap_drop:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - ../src:/src:rw
+
+      # Claude Code - auth & credentials
+      - ${USERPROFILE}/.claude.json:/home/vscode/.claude.json
+      - ${USERPROFILE}/.claude/.credentials.json:/home/vscode/.claude/.credentials.json
+
+      # Claude Code - shared config
+      - ${USERPROFILE}/.claude/settings.json:/home/vscode/.claude/settings.json
+      - ${USERPROFILE}/.claude/CLAUDE.md:/home/vscode/.claude/CLAUDE.md
+      - ${USERPROFILE}/.claude/commands:/home/vscode/.claude/commands
+
+      # Claude Code - isolated history per project (named volume)
+      - claude-history:/home/vscode/.claude/projects
+
+      # NuGet cache (shared across containers for speed)
+      - nuget-cache:/home/vscode/.nuget/packages
+
+      # dotnet global tools
+      - dotnet-tools:/home/vscode/.dotnet
+
+  firewall:
+    build:
+      context: ./firewall
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - ./firewall/config/dnsmasq.conf:/etc/dnsmasq.conf:ro
+      - ./firewall/scripts:/firewall:ro
+    healthcheck:
+      test: ["CMD", "test", "-f", "/tmp/firewall-ready"]
+      interval: 2s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  claude-history:
+  nuget-cache:
+  dotnet-tools:
