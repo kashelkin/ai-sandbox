@@ -84,6 +84,7 @@ docker compose down               # Stop all containers
 
 - **After any change to this repo**, update `README.md` to reflect the change.
 - **When adding a new folder or file mount** to `docker-compose.yml`, also add creation of that folder or file to `setup.ps1` so Windows users have it created automatically before first run.
+- **When adding a new parameter** to `.sandbox/.env`, add a comment above it explaining its purpose and any constraints (e.g. valid values, which scripts depend on it).
 
 ## Line Ending Requirement
 
