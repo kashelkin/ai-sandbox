@@ -18,7 +18,8 @@ $files = @(
     "$env:USERPROFILE\.claude.json",
     "$claudeDir\.credentials.json",
     "$claudeDir\settings.json",
-    "$claudeDir\CLAUDE.md"
+    "$claudeDir\CLAUDE.md",
+    "$claudeDir\statusline-command.sh"
 )
 foreach ($file in $files) {
     if (!(Test-Path $file)) {

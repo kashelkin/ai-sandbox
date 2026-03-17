@@ -63,7 +63,7 @@ The `setup.ps1` script creates required Claude Code configuration directories an
 
 `docker compose run` automatically starts the firewall container as a dependency before launching the sandbox session.
 
-Your project files are mounted at `/src`. Claude Code credentials and settings are mounted from the host.
+Your project files are mounted at `/src`. Claude Code credentials, settings, and the status line script (`~/.claude/statusline-command.sh`) are mounted from the host.
 
 Place your .NET project code in the `src/` directory at the root of this repository — it will be available at `/src` inside the container.
 
