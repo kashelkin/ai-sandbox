@@ -72,10 +72,13 @@ Place your .NET project code in the `src/` directory at the root of this reposit
 ```
 .
 ├── .sandbox/
-│   ├── Dockerfile              # Development container image
+│   ├── Dockerfile              # Sandbox container image
 │   ├── docker-compose.yml      # Container orchestration
 │   ├── setup.ps1               # Windows setup script
-│   ├── .env                    # Container user configuration
+│   ├── .env                    # Sandbox container configuration
+│   ├── scripts/
+│   │   ├── init-root.sh        # Root-level setup (git-delta, dirs, history)
+│   │   └── init-user.sh        # User-level setup (Claude Code install)
 │   └── firewall/
 │       ├── Dockerfile          # Firewall container image
 │       ├── config/

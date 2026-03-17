@@ -3,6 +3,7 @@ services:
     build:
       context: .
       args:
+          SANDBOX_IMAGE: ${SANDBOX_IMAGE}
           CONTAINER_USER: ${CONTAINER_USER}
     network_mode: "service:firewall"
     stdin_open: true
