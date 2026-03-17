@@ -46,22 +46,22 @@ docker compose restart firewall
 
 ```bash
 cd .sandbox
-docker compose run sandbox bash
+docker compose up -d
+docker compose exec sandbox bash
 ```
 
 ### Windows
 
-Run PowerShell as Administrator:
+One-time setup, then run:
 
 ```powershell
 cd .sandbox
 .\setup.ps1
-docker compose run sandbox bash
+docker compose up -d
+docker compose exec sandbox bash
 ```
 
 The `setup.ps1` script creates required Claude Code configuration directories and placeholder files on the host. Only needed on first run.
-
-`docker compose run` automatically starts the firewall container as a dependency before launching the sandbox session.
 
 Your project files are mounted at `/src`. Claude Code credentials, settings, and the status line script (`~/.claude/statusline-command.sh`) are mounted from the host.
 

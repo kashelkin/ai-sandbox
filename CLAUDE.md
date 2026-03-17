@@ -46,7 +46,7 @@ docker compose up -d
 docker compose exec sandbox bash
 ```
 
-**Windows** (Administrator PowerShell, one-time setup then run):
+**Windows** (one-time setup then run):
 ```powershell
 cd .sandbox
 .\setup.ps1
